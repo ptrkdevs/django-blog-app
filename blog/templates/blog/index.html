@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main>
+  <form action="create-post/" class="post-form" method="POST">
+    {% csrf_token %}
+    <textarea placeholder="enter your thoughts.." class="textareaInput" name="content"></textarea>
+    <input class="add-cta" type="submit" value="Add post" />
+  </form>
+
+  <section class="blogs">
+    {% for post in posts %}
+    <div class="post">
+      <h3 lass="post-title">
+        <a href="{% url 'post' post.id %}">{{post.created|date:'l, F j, Y'}}</a>
+      </h3>
+      <p class="post-body">{{ post.body|linebreaks|truncatewords:10 }}</p>
+    </div>
+    {% endfor %}
+
+    <div class="paginate">
+      {% if page_obj.has_previous %}
+      <a class="paginate-cta" href="?page={{page_obj.previous_page_number}}">previous</a>
+      {% endif %} {% if page_obj.has_next %}
+      <a class="paginate-cta" href="?page={{page_obj.next_page_number}}">next</a>
+      {% endif %}
+    </div>
+  </section>
+</main>
+{% endblock %}

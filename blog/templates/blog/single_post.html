@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+<main>
+  <img src="" alt="" />
+  <p>{{ post.body|linebreaks}}</p>
+
+  <div>
+    <a href="{% url 'home' %}" class="btn">Back to Index</a>
+  </div>
+</main>
+
+{% endblock content %}

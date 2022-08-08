@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrick's floating shinanigans</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body>
+    {% if messages %} {% for message in messages %}
+    <li
+      class="message"
+      style="
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 0.5rem 0;
+        font-size: 1.1rem;
+      "
+    >
+      {{ message }}
+    </li>
+    {% endfor %} {% endif %}
+    <h1 class="main-header">Hello world!</h1>
+    {% include 'nav.html' %} {% block content %} {% endblock content %} {% include 'footer.html' %}
+  </body>
+</html>
